@@ -8,15 +8,16 @@
 import UIKit
 
 class ViewController: UIViewController {
+    // MARK: - IB Outlets
     @IBOutlet weak var exampleLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
     
+    // MARK: - Private properties
     private var firstNumber = 0
     private var secondeNumber = 0
     private var number = 0
     private var mathSign = "+"
     private var result = 0
-    
     private var userResult = ""
     
     override func viewDidLoad() {
@@ -24,6 +25,7 @@ class ViewController: UIViewController {
         getNewExample()
     }
     
+    // MARK: - IB Actions
     @IBAction func selectorMatSign(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -82,6 +84,7 @@ class ViewController: UIViewController {
     }
 }
 
+// MARK: - Check result
 extension ViewController{
     func checkResult(firstNumber: Int, secondeNumber: Int) -> Bool{
         if Int(userResult) == result{
@@ -92,6 +95,7 @@ extension ViewController{
     }
 }
 
+// MARK: - Alerts
 extension ViewController{
     enum alertType{
         case resultTrue
@@ -122,6 +126,7 @@ extension ViewController{
     }
 }
 
+// MARK: - Get new examples
 extension ViewController{
     private func getNewExample(){
         switch mathSign {
