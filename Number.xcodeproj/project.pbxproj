@@ -60,8 +60,8 @@
 				18331CD62587431300D957F4 /* SceneDelegate.swift */,
 				18331CD82587431300D957F4 /* ViewController.swift */,
 				18331CDA2587431300D957F4 /* Main.storyboard */,
-				18331CDD2587431500D957F4 /* Assets.xcassets */,
 				18331CDF2587431500D957F4 /* LaunchScreen.storyboard */,
+				18331CDD2587431500D957F4 /* Assets.xcassets */,
 				18331CE22587431500D957F4 /* Info.plist */,
 			);
 			path = Number;
@@ -296,7 +296,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ddimpalass.Number;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -315,7 +315,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ddimpalass.Number;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
