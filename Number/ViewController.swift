@@ -19,31 +19,17 @@ class ViewController: UIViewController {
     private var mathSign = "+"
     private var result = 0
     private var userResult = ""
+    private var selectedSegmentIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getNewExample()
+        getNumbersAndSign(selectedSegmentIndex: selectedSegmentIndex)
     }
     
     // MARK: - IB Actions
     @IBAction func selectorMatSign(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            mathSign = "+"
-            
-        case 1:
-            mathSign = "-"
-            
-        case 2:
-            mathSign = "*"
-            
-        case 3:
-            mathSign = "/"
-            
-        default:
-            return
-        }
-        getNewExample()
+        selectedSegmentIndex = sender.selectedSegmentIndex
+        getNumbersAndSign(selectedSegmentIndex: selectedSegmentIndex)
     }
 
     @IBAction func numberTapped(_ sender: Any) {
@@ -52,19 +38,19 @@ class ViewController: UIViewController {
         answerLabel.text = userResult
     }
     
+    @IBAction func colorSettingButton(_ sender: UIButton) {
+        performSegue(withIdentifier: "colorSetting", sender: nil)
+    }
+    
     @IBAction func deleteNumberButton(_ sender: Any) {
         guard  !userResult.isEmpty else { return }
         if userResult.count < 2 {
             userResult.removeLast()
-            answerLabel.text = "Введите значение"
+            answerLabel.text = "Ответ"
         } else {
             userResult.removeLast()
             answerLabel.text = userResult
         }
-    }
-    
-    @IBAction func resetButton(_ sender: UIButton) {
-        getNewExample()
     }
     
     @IBAction func checkResultTapped(_ sender: Any) {
@@ -72,7 +58,7 @@ class ViewController: UIViewController {
             showAlert(title: "Поздравляем",
                       message: "Это правильное решение",
                       action: .resultTrue)
-        } else if answerLabel.text == "Введите значение" {
+        } else if answerLabel.text == "Ответ" {
             showAlert(title: "Пустое поле",
                       message: "Введите значение",
                       action: .resultFalse)
@@ -109,13 +95,13 @@ extension ViewController{
         switch action {
         case .resultTrue:
             okAction = UIAlertAction(title: "OK", style: .default) { _ in
-                self.answerLabel.text = "Введите значение"
+                self.answerLabel.text = "Ответ"
                 self.userResult = ""
-                self.getNewExample()
+                self.getNumbersAndSign(selectedSegmentIndex: self.selectedSegmentIndex)
             }
         case .resultFalse:
             okAction = UIAlertAction(title: "OK", style: .default) { _ in
-                self.answerLabel.text = "Введите значение"
+                self.answerLabel.text = "Ответ"
                 self.userResult = ""
             }
         }
@@ -126,30 +112,42 @@ extension ViewController{
     }
 }
 
-// MARK: - Get new examples
+// MARK: - Get numbers and sign
 extension ViewController{
-    private func getNewExample(){
-        switch mathSign {
-        case "+":
+    private func getNumbersAndSign(selectedSegmentIndex: Int){
+        switch selectedSegmentIndex {
+        case 0:
             firstNumber = Int.random(in: 0..<100)
             secondeNumber = Int.random(in: 0..<100)
+            mathSign = "+"
             result = firstNumber + secondeNumber
-        case "-":
+        case 1:
             firstNumber = Int.random(in: 2..<100)
             secondeNumber = Int.random(in: 0..<firstNumber)
+            mathSign = "-"
             result = firstNumber - secondeNumber
-        case "*":
+        case 2:
             firstNumber = Int.random(in: 1..<10)
             secondeNumber = Int.random(in: 1..<10)
+            mathSign = "x"
             result = firstNumber * secondeNumber
-        case "/":
+        case 3:
             number = Int.random(in: 1..<10)
             firstNumber = number * Int.random(in: 1..<10)
             secondeNumber = number
+            mathSign = "/"
             result = firstNumber / secondeNumber
         default:
             return
         }
+        getNewExample()
+    }
+}
+
+// MARK: - Get new examples
+extension ViewController{
+    private func getNewExample(){
         exampleLabel.text = "Решите пример: \(firstNumber) \(mathSign) \(secondeNumber)"
+        
     }
 }
