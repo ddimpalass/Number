@@ -7,7 +7,8 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController{
+    
     // MARK: - IB Outlets
     @IBOutlet weak var exampleLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
@@ -20,6 +21,14 @@ class ViewController: UIViewController {
     private var result = 0
     private var userResult = ""
     private var selectedSegmentIndex = 0
+    
+    // MARK: - Properties
+    var colorBg: Color = Color(red: 255,
+                               green: 255,
+                               blue: 255)
+    var colorText: Color = Color(red: 85,
+                                 green: 85,
+                                 blue: 85)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +48,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func colorSettingButton(_ sender: UIButton) {
-        performSegue(withIdentifier: "colorSetting", sender: nil)
     }
     
     @IBAction func deleteNumberButton(_ sender: Any) {
@@ -67,6 +75,37 @@ class ViewController: UIViewController {
                       message: "Это неверное решение",
                       action: .resultFalse)
         }
+    }
+}
+
+// MARK: - Get and set new color
+extension ViewController: ColorViewControllerDelegate{
+    func getNewColor(_ colorBg: Color, _ colorText: Color){
+        view.backgroundColor = UIColor(red: CGFloat(colorBg.red)/255,
+                                       green: CGFloat(colorBg.green)/255,
+                                       blue: CGFloat(colorBg.blue)/255,
+                                       alpha: 1/1)
+        exampleLabel.textColor = UIColor(red: CGFloat(colorText.red)/255,
+                                         green: CGFloat(colorText.green)/255,
+                                         blue: CGFloat(colorText.blue)/255,
+                                         alpha: 1/1)
+        answerLabel.textColor = UIColor(red: CGFloat(colorText.red)/255,
+                                        green: CGFloat(colorText.green)/255,
+                                        blue: CGFloat(colorText.blue)/255,
+                                        alpha: 1/1)
+        self.colorBg = colorBg
+        self.colorText = colorText
+    }
+}
+
+
+// MARK: - Navigation
+extension ViewController{
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let colorVC = segue.destination as! ColorViewController
+        colorVC.delegate = self
+        colorVC.colorBg = colorBg
+        colorVC.colorText = colorText
     }
 }
 
