@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController{
-    
+
     // MARK: - IB Outlets
     @IBOutlet weak var exampleLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
@@ -103,7 +103,7 @@ extension ViewController: ColorViewControllerDelegate{
         numPad.forEach{
             $0.tintColor = uiColorText
         }
-        checkButton.titleLabel?.textColor = uiColorBg
+        checkButton.setTitleColor(uiColorBg, for: .normal)
         checkButton.backgroundColor = uiColorText
             
         self.colorBg = colorBg
