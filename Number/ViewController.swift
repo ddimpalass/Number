@@ -12,19 +12,9 @@ class ViewController: UIViewController{
     // MARK: - IB Outlets
     @IBOutlet weak var exampleLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
-    @IBOutlet weak var one: UIButton!
-    @IBOutlet weak var two: UIButton!
-    @IBOutlet weak var three: UIButton!
-    @IBOutlet weak var four: UIButton!
-    @IBOutlet weak var five: UIButton!
-    @IBOutlet weak var six: UIButton!
-    @IBOutlet weak var seven: UIButton!
-    @IBOutlet weak var eight: UIButton!
-    @IBOutlet weak var nine: UIButton!
-    @IBOutlet weak var settingColor: UIButton!
-    @IBOutlet weak var zero: UIButton!
-    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet var numPad: [UIButton]!
+    
     
     // MARK: - Private properties
     private var firstNumber = 0
@@ -110,18 +100,9 @@ extension ViewController: ColorViewControllerDelegate{
         view.backgroundColor = uiColorBg
         exampleLabel.textColor = uiColorText
         answerLabel.textColor = uiColorText
-        one.tintColor = uiColorText
-        two.tintColor = uiColorText
-        three.tintColor = uiColorText
-        four.tintColor = uiColorText
-        five.tintColor = uiColorText
-        six.tintColor = uiColorText
-        seven.tintColor = uiColorText
-        eight.tintColor = uiColorText
-        nine.tintColor = uiColorText
-        settingColor.tintColor = uiColorText
-        zero.tintColor = uiColorText
-        deleteButton.tintColor = uiColorText
+        numPad.forEach{
+            $0.tintColor = uiColorText
+        }
         checkButton.titleLabel?.textColor = uiColorBg
         checkButton.backgroundColor = uiColorText
             

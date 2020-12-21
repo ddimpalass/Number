@@ -216,19 +216,19 @@
                     <connections>
                         <outlet property="answerLabel" destination="oRe-cW-w6D" id="gEU-7o-hEN"/>
                         <outlet property="checkButton" destination="uvT-bI-eZl" id="IPD-3A-KBZ"/>
-                        <outlet property="deleteButton" destination="8Yu-yD-RMA" id="Uby-Dw-rJ4"/>
-                        <outlet property="eight" destination="ZtQ-jN-xS0" id="LLh-zg-XhT"/>
                         <outlet property="exampleLabel" destination="nEr-0x-wyT" id="AMf-FU-T7J"/>
-                        <outlet property="five" destination="rSC-sM-BeZ" id="itV-KH-a0w"/>
-                        <outlet property="four" destination="hyR-Nf-UBD" id="cIJ-EJ-2WR"/>
-                        <outlet property="nine" destination="mtO-Fs-JJg" id="ptq-KN-J2A"/>
-                        <outlet property="one" destination="TID-9B-VNG" id="6Zr-Ml-vuW"/>
-                        <outlet property="settingColor" destination="3Ap-NS-Ymz" id="vcS-WB-DQS"/>
-                        <outlet property="seven" destination="YcK-4w-2AH" id="uM1-Ca-s5v"/>
-                        <outlet property="six" destination="pBC-V9-P2X" id="Lc5-F0-8Vb"/>
-                        <outlet property="three" destination="jqS-pW-jYT" id="6Is-cx-ze0"/>
-                        <outlet property="two" destination="IUW-84-iOs" id="oqa-2D-pqf"/>
-                        <outlet property="zero" destination="fKC-Q1-Zz2" id="j95-Zl-X40"/>
+                        <outletCollection property="numPad" destination="TID-9B-VNG" collectionClass="NSMutableArray" id="DFX-pp-Zvs"/>
+                        <outletCollection property="numPad" destination="IUW-84-iOs" collectionClass="NSMutableArray" id="OPR-YP-oQx"/>
+                        <outletCollection property="numPad" destination="jqS-pW-jYT" collectionClass="NSMutableArray" id="6Ql-t5-fOV"/>
+                        <outletCollection property="numPad" destination="hyR-Nf-UBD" collectionClass="NSMutableArray" id="S8A-r7-SU5"/>
+                        <outletCollection property="numPad" destination="rSC-sM-BeZ" collectionClass="NSMutableArray" id="8Gp-K7-um0"/>
+                        <outletCollection property="numPad" destination="pBC-V9-P2X" collectionClass="NSMutableArray" id="myt-gu-SbV"/>
+                        <outletCollection property="numPad" destination="YcK-4w-2AH" collectionClass="NSMutableArray" id="ViY-oa-8vr"/>
+                        <outletCollection property="numPad" destination="ZtQ-jN-xS0" collectionClass="NSMutableArray" id="Nd6-ra-AIZ"/>
+                        <outletCollection property="numPad" destination="mtO-Fs-JJg" collectionClass="NSMutableArray" id="dye-f9-vI4"/>
+                        <outletCollection property="numPad" destination="3Ap-NS-Ymz" collectionClass="NSMutableArray" id="9qj-sT-pFZ"/>
+                        <outletCollection property="numPad" destination="fKC-Q1-Zz2" collectionClass="NSMutableArray" id="C2Y-h0-HZJ"/>
+                        <outletCollection property="numPad" destination="8Yu-yD-RMA" collectionClass="NSMutableArray" id="zUh-2m-R6h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
