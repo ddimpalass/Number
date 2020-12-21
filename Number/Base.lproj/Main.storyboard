@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -215,7 +215,20 @@
                     </view>
                     <connections>
                         <outlet property="answerLabel" destination="oRe-cW-w6D" id="gEU-7o-hEN"/>
+                        <outlet property="checkButton" destination="uvT-bI-eZl" id="IPD-3A-KBZ"/>
+                        <outlet property="deleteButton" destination="8Yu-yD-RMA" id="Uby-Dw-rJ4"/>
+                        <outlet property="eight" destination="ZtQ-jN-xS0" id="LLh-zg-XhT"/>
                         <outlet property="exampleLabel" destination="nEr-0x-wyT" id="AMf-FU-T7J"/>
+                        <outlet property="five" destination="rSC-sM-BeZ" id="itV-KH-a0w"/>
+                        <outlet property="four" destination="hyR-Nf-UBD" id="cIJ-EJ-2WR"/>
+                        <outlet property="nine" destination="mtO-Fs-JJg" id="ptq-KN-J2A"/>
+                        <outlet property="one" destination="TID-9B-VNG" id="6Zr-Ml-vuW"/>
+                        <outlet property="settingColor" destination="3Ap-NS-Ymz" id="vcS-WB-DQS"/>
+                        <outlet property="seven" destination="YcK-4w-2AH" id="uM1-Ca-s5v"/>
+                        <outlet property="six" destination="pBC-V9-P2X" id="Lc5-F0-8Vb"/>
+                        <outlet property="three" destination="jqS-pW-jYT" id="6Is-cx-ze0"/>
+                        <outlet property="two" destination="IUW-84-iOs" id="oqa-2D-pqf"/>
+                        <outlet property="zero" destination="fKC-Q1-Zz2" id="j95-Zl-X40"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -289,7 +302,7 @@
                                                         </constraints>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                                                         <connections>
                                                             <action selector="changeColorTextField:" destination="SV9-1j-pJP" eventType="editingDidEnd" id="hVs-gt-7Ht"/>
                                                         </connections>
@@ -315,7 +328,7 @@
                                                         <rect key="frame" x="38" y="0.0" width="66" height="43"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                                                         <connections>
                                                             <action selector="changeColorTextField:" destination="SV9-1j-pJP" eventType="editingDidEnd" id="L0V-yF-KgK"/>
                                                         </connections>
@@ -341,7 +354,7 @@
                                                         <rect key="frame" x="38" y="0.0" width="66" height="43"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                                         <connections>
                                                             <action selector="changeColorTextField:" destination="SV9-1j-pJP" eventType="editingDidEnd" id="brS-xU-VG9"/>
                                                         </connections>

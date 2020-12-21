@@ -44,6 +44,8 @@ class ColorViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.addDoneButtonOnKeyboard()
+        
         redTextField.delegate = self
         greenTextField.delegate = self
         blueTextField.delegate = self
@@ -141,47 +143,96 @@ extension ColorViewController {
     }
 }
 
-// MARK: Hide keyboard
-extension ColorViewController {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-}
-
-
 // MARK: Keyboard
 extension ColorViewController: UITextFieldDelegate {
     
-    func textFieldDidEndEditing(_ textField: UITextField){
-        if textField == redTextField{
-            redSlider.value = Float(Int(String(redTextField.text ?? "255")) ?? 255)
-        } else if textField == greenTextField{
-            greenSlider.value = Float(Int(String(greenTextField.text ?? "255")) ?? 255)
-        } else if textField == blueTextField{
-            blueSlider.value = Float(Int(String(blueTextField.text ?? "255")) ?? 255)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func addDoneButtonOnKeyboard(){
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        doneToolbar.barStyle = .default
+
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+
+        redTextField.inputAccessoryView = doneToolbar
+        greenTextField.inputAccessoryView = doneToolbar
+        blueTextField.inputAccessoryView = doneToolbar
         }
-        
+
+        @objc func doneButtonAction(){
+            redTextField.resignFirstResponder()
+            greenTextField.resignFirstResponder()
+            blueTextField.resignFirstResponder()
+        }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        changeColorButton.isHidden = true
+        if textField == redTextField{
+            redTextField.text = ""
+        } else if textField == greenTextField{
+            greenTextField.text = ""
+        } else if textField == blueTextField{
+            blueTextField.text = ""
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        let numsLimit = 3
+
+        let startingLength = textField.text?.count ?? 0
+        let lengthToAdd = string.count
+        let lengthToReplace =  range.length
+        let newLength = startingLength + lengthToAdd - lengthToReplace
+
+        return newLength <= numsLimit
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField){
+        changeColorButton.isHidden = false
+        if textField == redTextField && textField.text != nil{
+            if Int(textField.text!) ?? 300 < 256 && Int(textField.text!)! >= 0 {
+                redSlider.value = Float(Int(String(redTextField.text!))!)
+            } else {
+                redTextField.text = String(Int(redSlider.value))
+            }
+        } else if textField == greenTextField{
+            if Int(textField.text!) ?? 300 < 256 && Int(textField.text!)! >= 0 {
+                greenSlider.value = Float(Int(String(greenTextField.text!))!)
+            } else {
+                greenTextField.text = String(Int(greenSlider.value))
+            }
+        } else if textField == blueTextField{
+            if Int(textField.text!) ?? 300 < 256 && Int(textField.text!)! >= 0 {
+                blueSlider.value = Float(Int(String(blueTextField.text!))!)
+            } else {
+                blueTextField.text = String(Int(blueSlider.value))
+            }
+        }
+            
         switch selectedSegmentIndex {
         case 0:
-            colorBg = Color(red: Int(redSlider.value), green: Int(greenSlider.value), blue: Int(blueSlider.value))
+            colorBg = Color(red: Int(redSlider.value),
+                            green: Int(greenSlider.value),
+                            blue: Int(blueSlider.value))
         case 1:
-            colorText = Color(red: Int(redSlider.value), green: Int(greenSlider.value), blue: Int(blueSlider.value))
+                colorText = Color(red: Int(redSlider.value),
+                                  green: Int(greenSlider.value),
+                                  blue: Int(blueSlider.value))
         default:
             return
         }
-        
         updateView()
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-    }
-}
-
-// MARK: Keyboard done button
-extension ColorViewController{
     @objc func keyboardWillShow(notification: NSNotification) {
-        changeColorButton.isHidden = true
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
                 self.view.frame.origin.y -= keyboardSize.height
@@ -190,14 +241,11 @@ extension ColorViewController{
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
-        changeColorButton.isHidden = false
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
         }
     }
 }
-    
-
 
 
 

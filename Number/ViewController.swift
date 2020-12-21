@@ -12,6 +12,19 @@ class ViewController: UIViewController{
     // MARK: - IB Outlets
     @IBOutlet weak var exampleLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
+    @IBOutlet weak var one: UIButton!
+    @IBOutlet weak var two: UIButton!
+    @IBOutlet weak var three: UIButton!
+    @IBOutlet weak var four: UIButton!
+    @IBOutlet weak var five: UIButton!
+    @IBOutlet weak var six: UIButton!
+    @IBOutlet weak var seven: UIButton!
+    @IBOutlet weak var eight: UIButton!
+    @IBOutlet weak var nine: UIButton!
+    @IBOutlet weak var settingColor: UIButton!
+    @IBOutlet weak var zero: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var checkButton: UIButton!
     
     // MARK: - Private properties
     private var firstNumber = 0
@@ -29,6 +42,9 @@ class ViewController: UIViewController{
     var colorText: Color = Color(red: 85,
                                  green: 85,
                                  blue: 85)
+    
+    var uiColorBg: UIColor = .white
+    var uiColorText: UIColor = .darkGray
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,18 +97,34 @@ class ViewController: UIViewController{
 // MARK: - Get and set new color
 extension ViewController: ColorViewControllerDelegate{
     func getNewColor(_ colorBg: Color, _ colorText: Color){
-        view.backgroundColor = UIColor(red: CGFloat(colorBg.red)/255,
-                                       green: CGFloat(colorBg.green)/255,
-                                       blue: CGFloat(colorBg.blue)/255,
-                                       alpha: 1/1)
-        exampleLabel.textColor = UIColor(red: CGFloat(colorText.red)/255,
-                                         green: CGFloat(colorText.green)/255,
-                                         blue: CGFloat(colorText.blue)/255,
-                                         alpha: 1/1)
-        answerLabel.textColor = UIColor(red: CGFloat(colorText.red)/255,
-                                        green: CGFloat(colorText.green)/255,
-                                        blue: CGFloat(colorText.blue)/255,
-                                        alpha: 1/1)
+        
+        uiColorBg = UIColor(red: CGFloat(colorBg.red)/255,
+                            green: CGFloat(colorBg.green)/255,
+                            blue: CGFloat(colorBg.blue)/255,
+                            alpha: 1/1)
+        uiColorText = UIColor(red: CGFloat(colorText.red)/255,
+                              green: CGFloat(colorText.green)/255,
+                              blue: CGFloat(colorText.blue)/255,
+                              alpha: 1/1)
+        
+        view.backgroundColor = uiColorBg
+        exampleLabel.textColor = uiColorText
+        answerLabel.textColor = uiColorText
+        one.tintColor = uiColorText
+        two.tintColor = uiColorText
+        three.tintColor = uiColorText
+        four.tintColor = uiColorText
+        five.tintColor = uiColorText
+        six.tintColor = uiColorText
+        seven.tintColor = uiColorText
+        eight.tintColor = uiColorText
+        nine.tintColor = uiColorText
+        settingColor.tintColor = uiColorText
+        zero.tintColor = uiColorText
+        deleteButton.tintColor = uiColorText
+        checkButton.titleLabel?.textColor = uiColorBg
+        checkButton.backgroundColor = uiColorText
+            
         self.colorBg = colorBg
         self.colorText = colorText
     }
@@ -187,6 +219,5 @@ extension ViewController{
 extension ViewController{
     private func getNewExample(){
         exampleLabel.text = "Решите пример: \(firstNumber) \(mathSign) \(secondeNumber)"
-        
     }
 }
